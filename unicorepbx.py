@@ -57,6 +57,7 @@ c.execute(aniQuery)
 result = c.fetchone()
 if result is None:
   agi.verbose("Something went wrong!!! Result Empty! ABORT! ABORT!")
+  log("Something went wrong!!! Result Empty!")
   c.close()
   db.close()
   agi.stream_file('cannot-complete-network-error')
@@ -70,6 +71,7 @@ else:
   agi.set_variable("CAMPAIGN", campaign)
   agi.set_variable("EMPLOYEE", empID)
   agi.verbose("UniDial PBX Query complete: CAMPAIGN=%s, CALLERID(num)=%s, EMPLOYEE=%s" % (campaign, outANI, empID))
+  log("UniDial PBX Query complete: CAMPAIGN=%s, CALLERID(num)=%s, EMPLOYEE=%s" % (campaign, outANI, empID))
   sys.exit()
 
 
